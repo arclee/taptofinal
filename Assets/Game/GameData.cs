@@ -6,8 +6,10 @@ using System.Runtime.Serialization.Formatters.Binary;
 public class GameData : MonoBehaviour {
 
 	public static GameData instance;
+	public ShuffleIntValue money;
 	public GameSaveDataV0 gameSavedata;
-	
+
+
 	// Use this for initialization
 	void Awake ()
 	{
@@ -25,7 +27,7 @@ public class GameData : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
 	{
-	
+		money.Value = 0;
 	}
 	
 	// Update is called once per frame
@@ -43,6 +45,19 @@ public class GameData : MonoBehaviour {
 		if (GUILayout.Button("load"))
 		{
 			LoadGameDataXML();
+		}
+		
+		if (GUILayout.Button("Money+"))
+		{
+			money.Value = money.Value + 100;
+			Debug.Log(money.Value);
+			Debug.Log(money.myValue);
+		}
+		if (GUILayout.Button("Money-"))
+		{
+			money.Value = money.Value - 100;
+			Debug.Log(money.Value);
+			Debug.Log(money.myValue);
 		}
 	}
 	
